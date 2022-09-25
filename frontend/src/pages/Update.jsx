@@ -6,6 +6,9 @@ import { useNavigate, useParams } from "react-router-dom";
 const Update = () => {
   const [book, setBook] = useState([{}]);
 
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -17,10 +20,7 @@ const Update = () => {
       }
     };
     fetchBook();
-  }, []);
-
-  const navigate = useNavigate();
-  const { id } = useParams();
+  }, [id]);
 
   const handleChange = (e) => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
